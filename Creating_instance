@@ -1,0 +1,44 @@
+import logging
+import boto3
+from botocore.exceptions import ClientError
+
+def create_ec2_instance(image_id,instance_type,keypair_name):
+
+ec2_client=boto3.client('ec2')
+try:
+	response=ec2_client.create_instances(ImageId=image_id,
+						InstanceType=instance_type,
+						KeyName=keypair_name,MinCount=1,MaxCount=1)
+
+except ClientError as e:
+    logging.error(e)
+    return(none)
+return response['Instances'][0]
+
+def main:
+
+	image_id='INSTANCE_AMI_ID'
+	instance_type='INSTANCE_TYPE'
+	keypair_name='KEYNAME'
+
+logging.BasicConfig(level=logging.DEBUG,format='%(levelname)s,%(asctime)s,%(message)s')
+
+instance_details=create_ec2_instance(image_id,instance_type,kepypair_name)
+
+waiter=ec2.get_waiter('instance_running)
+waiter.wait(
+	InstanceIds=[ec.get_InstanceId])
+	WaiterConfig={'Delay':60, 'MaxAttempts'=10}
+
+if instance_details != None:
+	logging.info(f 'Instance launched is: {instance_details["InstanceId"]}')
+	logging.info(f 'vpc id :{instance_details["VpcId"]}')
+	logging.info(f 'Private IP address: {instance_details["PrivateIpAddress"]}')
+	logging.info(f 'current state :{instance_details["State"]}')
+
+if __name__='__main__'
+main()
+
+	
+
+
