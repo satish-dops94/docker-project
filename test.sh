@@ -43,7 +43,7 @@ if [[ $project_name == '' ]];
 then
 	exit 1
 else
-	docker-compose run -d -e projectname=$project_name cicero
+	docker-compose run -d -e --name cicero projectname=$project_name cicero
 	sleep 5s
 	echo "Container is up and running.."
 fi
