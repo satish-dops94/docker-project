@@ -25,10 +25,10 @@ fi
 echo "##### Create custom project for application ####"
 
 read -p "Enter the project name: " project_name
-sudo mkdir -p ~/cicerotool/$project_name/repos
-sudo chown -R 1050:1050 ~/cicerotool/
+sudo mkdir -p ~/satish/$project_name/repos
+sudo chown -R 1050:1050 ~/satish/
 
-echo "Move all application related files inside repos directory : ~/cicerotool/$project_name/repos"
+echo "Move all application related files inside repos directory : ~/satish/$project_name/repos"
 }
 
 function start_app() 
@@ -43,7 +43,7 @@ if [[ $project_name == '' ]];
 then
 	exit 1
 else
-	docker-compose run -d -e --name cicero projectname=$project_name cicero
+	docker-compose run -d --name dev-sat projectname=$project_name cicero
 	sleep 5s
 	echo "Container is up and running.."
 fi
@@ -64,7 +64,7 @@ echo "Container stopped "
 function logs(){
 
 echo "Checking the logs..."
-docker logs --timestamps cicero | tee logs.txt
+docker logs --timestamps dev-sat | tee logs.txt
 echo "Extracted logs to file -> logs.txt..."
 }
 
