@@ -11,7 +11,7 @@ node {
     if ("${params.DEPLOY_ENV}" == "prod"){
       echo "This is prod environment"
     }
-    elif ("${params.DEPLOY_ENV}" == "stage"){
+    else if ("${params.DEPLOY_ENV}" == "stage"){
       echo "This is stage environment"
     }
   } 
