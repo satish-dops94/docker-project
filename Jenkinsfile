@@ -1,3 +1,5 @@
+#!groovy
+
 node {
   stage('test1'){
     echo "this is stage 1"
