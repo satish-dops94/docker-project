@@ -6,4 +6,5 @@ node {
   } 
   stage('build'){
     echo "this is stage2"
+  }
 }
